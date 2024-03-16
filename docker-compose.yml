@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  ruckus_scp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "2222:22"
+    volumes:
+      - ./files:/files:ro
+    restart: always
+#    env_file: scp.env
+#    secrets:
+#      - scp_password
+
+secrets:
+  scp_password:
+    file: password.txt
